@@ -55,7 +55,7 @@ public static void generateSquarePattern(int size, char character) {
     if (!Hollow) {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                System.out.print(character + " ");
+                System.out.print(character + "   ");
             }
             System.out.println();
         }
@@ -63,9 +63,9 @@ public static void generateSquarePattern(int size, char character) {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 if (i == 0 || i == size - 1 || j == 0 || j == size - 1) {
-                    System.out.print(character + " ");
+                    System.out.print(character + "   ");
                 } else {
-                    System.out.print("  "); // Print spaces for hollow part
+                    System.out.print("    "); // Print spaces for hollow part
                 }
             }
             System.out.println();
@@ -88,6 +88,7 @@ public static void generateSquarePattern(int size, char character) {
                 System.out.println();
             }
         }
+
     }
 
     public static void generatePyramidPattern(int size, char character) {
