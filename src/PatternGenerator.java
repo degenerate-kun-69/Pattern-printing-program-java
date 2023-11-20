@@ -52,7 +52,7 @@ public class PatternGenerator {
     public static void generateStarPattern(int size, char character) {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j <= i; j++) {
-                System.out.print("* ");
+                System.out.print(character+" ");
             }
             System.out.println();
         }
