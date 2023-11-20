@@ -7,14 +7,12 @@ public class PatternGenerator {
         System.out.println("Welcome to Pattern Generator!");
         System.out.print("Enter pattern type (square, Right angled triangle, pyramid, circle, diamond): ");
         String patternType = scanner.nextLine();
-
         System.out.print("Enter size of the pattern: ");
         int size = scanner.nextInt();
         scanner.nextLine(); // Consume newline
 
         System.out.print("Enter character to use: ");
         char character = scanner.nextLine().charAt(0);
-
         System.out.println("Generated Pattern:");
         if (patternType.equalsIgnoreCase("square")) {
             generateSquarePattern(size, character);
