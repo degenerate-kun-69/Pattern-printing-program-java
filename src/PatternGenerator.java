@@ -5,7 +5,7 @@ public class PatternGenerator {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Welcome to Pattern Generator!");
-        System.out.print("Enter pattern type (square, triangle, star, circle, diamond): ");
+        System.out.print("Enter pattern type (square, Right angled triangle, pyramid, circle, diamond): ");
         String patternType = scanner.nextLine();
 
         System.out.print("Enter size of the pattern: ");
@@ -18,10 +18,10 @@ public class PatternGenerator {
         System.out.println("Generated Pattern:");
         if (patternType.equalsIgnoreCase("square")) {
             generateSquarePattern(size, character);
-        } else if (patternType.equalsIgnoreCase("triangle")) {
+        } else if (patternType.equalsIgnoreCase("Right angled triangle")) {
             generateTrianglePattern(size, character);
-        } else if (patternType.equalsIgnoreCase("star")) {
-            generateStarPattern(size, character);
+        } else if (patternType.equalsIgnoreCase("Pyramid")) {
+            generatePyramidPattern(size, character);
         } else if (patternType.equalsIgnoreCase("circle")) {
             generateCirclePattern(size, character);
         } else if (patternType.equalsIgnoreCase("diamond")) {
@@ -48,28 +48,46 @@ public class PatternGenerator {
             System.out.println();
         }
     }
-
-    public static void generateStarPattern(int size, char character) {
+    public static void generatePyramidPattern(int size, char character) {
         for (int i = 0; i < size; i++) {
+            for (int j = size; j > i + 1; j--) {
+                System.out.print(" ");
+            }
             for (int j = 0; j <= i; j++) {
-                System.out.print(character+" ");
+                System.out.print(character + " ");
             }
             System.out.println();
         }
     }
 
+    //    public static void generateCirclePattern(int size, char character) {
+//        for (int i = 0; i <= 2 * size; i++) {
+//            for (int j = 0; j <= 2 * size; j++) {
+//                if (Math.pow(i - size, 2) + Math.pow(j - size, 2) <= Math.pow(size, 2)) {
+//                    System.out.print(character + " ");
+//                } else {
+//                    System.out.print("  ");
+//                }
+//            }
+//            System.out.println();
+//        }
+//    }
     public static void generateCirclePattern(int size, char character) {
-        for (int i = 0; i <= size; i++) {
-            for (int j = 0; j <= size; j++) {
-                if (Math.pow(i - size / 2.0, 2) + Math.pow(j - size / 2.0, 2) <= Math.pow(size / 2.0, 2)) {
+        // This is a basic implementation. It may not be a perfect circle due to the console's rectangular characters.
+        for (int i = 0; i <= size * 2; i++) {
+            for (int j = 0; j <= size * 2; j++) {
+                int distance = (int) Math.sqrt(Math.pow(i - size, 2) + Math.pow(j - size, 2));
+                if (distance <= size) {
                     System.out.print(character + " ");
                 } else {
-                    System.out.print("  ");
+                    System.out.print("  "); // Two spaces for better visual representation
                 }
             }
             System.out.println();
         }
     }
+
+
 
     public static void generateDiamondPattern(int size, char character) {
         for (int i = 0; i < size; i++) {
