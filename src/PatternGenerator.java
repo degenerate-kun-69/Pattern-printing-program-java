@@ -58,18 +58,7 @@ public class PatternGenerator {
         }
     }
 
-    //    public static void generateCirclePattern(int size, char character) {
-//        for (int i = 0; i <= 2 * size; i++) {
-//            for (int j = 0; j <= 2 * size; j++) {
-//                if (Math.pow(i - size, 2) + Math.pow(j - size, 2) <= Math.pow(size, 2)) {
-//                    System.out.print(character + " ");
-//                } else {
-//                    System.out.print("  ");
-//                }
-//            }
-//            System.out.println();
-//        }
-//    }
+
     public static void generateCirclePattern(int size, char character) {
         // This is a basic implementation. It may not be a perfect circle due to the console's rectangular characters.
         for (int i = 0; i <= size * 2; i++) {
