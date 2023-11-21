@@ -30,14 +30,18 @@ public class PatternGenerator {
            case "parallelogram":
                System.out.println("Do you want the patter to be hollow? (True/false)");
                boolean hollow = scanner.nextBoolean();
+               System.out.println("Enter base");
                int base = scanner.nextInt();
+               System.out.println("Enter Height");
                int height = scanner.nextInt();
                printParallelogram(base, height, hollow, character);
                break;
            case "trapezium":
                System.out.println("Do you want the patter to be hollow? (True/false)");
                boolean hollow2 = scanner.nextBoolean();
+               System.out.println("Enter base");
                int base2 = scanner.nextInt();
+               System.out.println("Enter Height");
                int height2 = scanner.nextInt();
                printTrapezium(base2, height2, hollow2, character);
                break;
@@ -175,22 +179,23 @@ public class PatternGenerator {
                }
            }
        }
-   private static void printParallelogram(int base, int height, boolean isHollow, char character) {
-       for (int i = 0; i < height; i++) {
-           for (int j = 0; j < i; j++) {
-               System.out.print("  ");
-           }
-           for (int j = 0; j < base; j++) {
-               if (isHollow && i > 0 && i < height - 1 && j > 0 && j < base - 1) {
-                   System.out.print("   ");
-               } else {
-                   System.out.print(character + "  ");
-               }
-           }
-           System.out.println();
-       }
-   }
-   public static void generateDiamondPattern ( int size, char character){
+    private static void printParallelogram(int base, int height, boolean isHollow, char character) {
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < i; j++) {
+                System.out.print("  ");
+            }
+            for (int j = 0; j < base; j++) {
+                if (isHollow && i > 0 && i < height - 1 && j > 0 && j < base - 1) {
+                    System.out.print("   ");
+                } else {
+                    System.out.print(character + "  ");
+                }
+            }
+            System.out.println();
+        }
+    }
+
+    public static void generateDiamondPattern ( int size, char character){
            boolean Hollow ;
            Scanner sc = new Scanner(System.in);
            System.out.println("Do you want the pattern to be hollow? (True/False)");
