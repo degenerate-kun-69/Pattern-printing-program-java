@@ -158,27 +158,34 @@ public class PatternGenerator {
            System.out.println();
        }
    }
-   public static void generateCirclePattern(int size,char character){
-           // not a perfect circle due to the console's rectangular characters.
-           boolean Hollow ;
-           Scanner sc = new Scanner(System.in);
-           System.out.println("Do you want the pattern to be hollow? (True/False)");
-           Hollow = sc.nextBoolean();
-           System.out.println("Generated Pattern:");
-           if (!Hollow) {
-               for (int i = 0; i <= size * 2; i++) {
-                   for (int j = 0; j <= size * 2; j++) {
-                       int distance = (int) Math.sqrt(Math.pow(i - size, 2) + Math.pow(j - size, 2));
-                       if (distance <= size) {
-                           System.out.print(character + " ");
-                       } else {
-                           System.out.print("  "); // Two spaces for better visual representation
-                       }
-                   }
-                   System.out.println();
-               }
-           }
-       }
+    public static void generateCirclePattern(int size, char character) {
+        boolean isHollow;
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Do you want the pattern to be hollow? (True/False)");
+        isHollow = sc.nextBoolean();
+        System.out.println("Generated Pattern:");
+
+        for (int i = 0; i <= size * 2; i++) {
+            for (int j = 0; j <= size * 2; j++) {
+                int distance = (int) Math.sqrt(Math.pow(i - size, 2) + Math.pow(j - size, 2));
+                if (!isHollow) {
+                    if (distance <= size) {
+                        System.out.print(character + " ");
+                    } else {
+                        System.out.print("  "); // Two spaces for better visual representation
+                    }
+                } else {
+                    if (distance >= size - 1 && distance <= size + 1) {
+                        System.out.print(character + " ");
+                    } else {
+                        System.out.print("  "); // Two spaces for better visual representation
+                    }
+                }
+            }
+            System.out.println();
+        }
+    }
     private static void printParallelogram(int base, int height, boolean isHollow, char character) {
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < i; j++) {
