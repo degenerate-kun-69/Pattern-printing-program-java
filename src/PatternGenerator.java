@@ -13,34 +13,48 @@ public class PatternGenerator {
 
         System.out.print("Enter character to use: ");
         char character = scanner.nextLine().charAt(0);
+        //changing it to switch case
+        switch(patternType.toLowerCase()) {
+            case "circle":
+                generateCirclePattern(size, character);
+                break;
 
-        if (patternType.equalsIgnoreCase("square")) {
-            generateSquarePattern(size, character);
-        } else if (patternType.equalsIgnoreCase("Right angled triangle")) {
-            generateTrianglePattern(size, character);
-        } else if (patternType.equalsIgnoreCase("Pyramid")) {
-            generatePyramidPattern(size, character);
-        } else if (patternType.equalsIgnoreCase("circle")) {
-            generateCirclePattern(size, character);
-        } else if (patternType.equalsIgnoreCase("diamond")) {
-            generateDiamondPattern(size, character);
-        } else if (patternType.equalsIgnoreCase("Parallelogram")) {
-            System.out.println("Do you want the patter to be hollow? (True/false)");
-            boolean hollow= scanner.nextBoolean();
-            int base= scanner.nextInt();
-            int height = scanner.nextInt();
-            printParallelogram(base,height,hollow,character);
+            case "square":
+                generateSquarePattern(size, character);
+                break;
 
-        } else if (patternType.equalsIgnoreCase("trapezium")) {
-            System.out.println("Do you want the patter to be hollow? (True/false)");
-            boolean hollow= scanner.nextBoolean();
-            int base= scanner.nextInt();
-            int height = scanner.nextInt();
-            printTrapezium(base,height,hollow,character);
-        } else {
-            System.out.println("Invalid pattern type entered. Please choose one of the given one.");
+            case "right angled triangle":
+                generateTrianglePattern(size, character);
+                break;
+
+            case "pyramid":
+                generatePyramidPattern(size, character);
+                break;
+
+            case "diamond":
+                generateDiamondPattern(size, character);
+                break;
+
+            case "parallelogram":
+                System.out.println("Do you want the patter to be hollow? (True/false)");
+                boolean hollow = scanner.nextBoolean();
+                int base = scanner.nextInt();
+                int height = scanner.nextInt();
+                printParallelogram(base, height, hollow, character);
+                break;
+
+            case "trapezium":
+                System.out.println("Do you want the patter to be hollow? (True/false)");
+                boolean hollow2 = scanner.nextBoolean();
+                int base2 = scanner.nextInt();
+                int height2 = scanner.nextInt();
+                printTrapezium(base2, height2, hollow2, character);
+                break;
+            default:
+                System.out.println("Invalid pattern type entered. Please choose one of the given one.");
+            }
         }
-    }
+
 
     public static void generateSquarePattern(int size, char character) {
         boolean Hollow;
@@ -72,36 +86,38 @@ public class PatternGenerator {
 
 
     public static void generateTrianglePattern(int size, char character) {
-        boolean Hollow ;
+        boolean hollow;
         Scanner sc = new Scanner(System.in);
         System.out.println("Do you want the pattern to be hollow? (True/False)");
-        Hollow = sc.nextBoolean();
+        hollow = sc.nextBoolean();
         System.out.println("Generated Pattern:");
-        if (!Hollow) {
-            for (int i = 0; i < size; i++) {
-                for (int j = 0; j <= i; j++) {
+
+        if (!hollow) {
+            for (int i = 1; i <= size; i++) {
+                for (int j = 1; j <= i; j++) {
+                    System.out.print(character + " ");
+                }
+                System.out.println();
+            }
+        } else {
+            for (int i = 1; i <= size; i++) {
+                if (i == size || i == 1) {
+                    for (int j = 1; j <= i; j++) {
+                        System.out.print(character + " ");
+                    }
+                } else {
+                    System.out.print(character + " ");
+                    for (int j = 1; j <= i - 2; j++) {
+                        System.out.print("  "); // Adjust spaces for the hollow part
+                    }
                     System.out.print(character + " ");
                 }
                 System.out.println();
             }
         }
-        for (int i = 0; i < size - 1; i++) {
-            System.out.print(character + " ");
-        }
-        System.out.println(character); // Print the last character for the hollow part
-
-        for (int i = 1; i < size - 1; i++) {
-            System.out.print(character + " ");
-            for (int j = 1; j < i; j++) {
-                System.out.print("  "); // Print spaces for the hollow part
-            }
-            System.out.println(character);
-
-
-        }
     }
 
-        public static void generatePyramidPattern ( int size, char character){
+    public static void generatePyramidPattern ( int size, char character){
             boolean Hollow ;
             Scanner sc = new Scanner(System.in);
             System.out.println("Do you want the pattern to be hollow? (True/False)");
