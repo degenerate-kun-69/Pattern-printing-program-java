@@ -2,32 +2,52 @@ import java.util.Scanner;
 public class PatternGenerator {
    public static void main(String[] args) {
        Scanner scanner = new Scanner(System.in);
-       System.out.println("Welcome to Pattern Generator!");
-       System.out.print("Enter pattern type (square, Right angled triangle, pyramid, circle, diamond,parallelogram, trapezium): ");
-       String patternType = scanner.nextLine();//scans userIn
+       System.out.println("┌────────────────────────┐");
+       System.out.println("│ WELCOME TO THE PATTERN │");
+       System.out.println("│ GENERATOR!             │");
+       System.out.println("└────────────────────────┘");
+       System.out.println("┌──────────────────────────────────────────────────────────┐");
+       System.out.println("│ Choose a pattern type:                                   │");
+       System.out.println("│ 1. Square                                                │");
+       System.out.println("│ 2. Right angled Triangle                                 │");
+       System.out.println("│ 3. Pyramid                                               │");
+       System.out.println("│ 4. Circle                                                │");
+       System.out.println("│ 5. Diamond                                               │");
+       System.out.println("│ 6. Parallelogram                                         │");
+       System.out.println("│ 7. Trapezium                                             │");
+       System.out.println("└──────────────────────────────────────────────────────────┘");
+       System.out.print("Enter your choice: ");
+
+
+       String patternType = scanner.nextLine();
        System.out.print("Enter size of the pattern: ");
-       int size = scanner.nextInt();//scans size
-       scanner.nextLine(); // Consume newline
+       int size = scanner.nextInt();
+       scanner.nextLine();
        System.out.print("Enter character to use: ");
-       char character = scanner.nextLine().charAt(0);//to solve the issue of person entering multiple character, chooses first only
-       //switch case implementation instead of if-else to reduce complexity
+       char character = scanner.nextLine().charAt(0);
        switch(patternType.toLowerCase()) {
-           case "circle":
-               generateCirclePattern(size, character);
-               break;
            case "square":
+           case "1":
                generateSquarePattern(size, character);
                break;
            case "right angled triangle":
+           case "2":
                generateTrianglePattern(size, character);
                break;
            case "pyramid":
+           case "3":
                generatePyramidPattern(size, character);
                break;
+           case "circle":
+           case "4":
+               generateCirclePattern(size, character);
+               break;
            case "diamond":
+           case "5":
                generateDiamondPattern(size, character);
                break;
            case "parallelogram":
+           case "6":
                System.out.println("Do you want the patter to be hollow? (True/false)");
                boolean hollow = scanner.nextBoolean();
                System.out.println("Enter base");
@@ -37,6 +57,7 @@ public class PatternGenerator {
                printParallelogram(base, height, hollow, character);
                break;
            case "trapezium":
+           case "7":
                System.out.println("Do you want the patter to be hollow? (True/false)");
                boolean hollow2 = scanner.nextBoolean();
                System.out.println("Enter base");
@@ -45,11 +66,61 @@ public class PatternGenerator {
                int height2 = scanner.nextInt();
                printTrapezium(base2, height2, hollow2, character);
                break;
-            default:
-                //case if input fails or wrong input
+           default:
+               //case if input fails or wrong input
                System.out.println("Invalid pattern type entered. Please choose one of the given one.");
-           }
        }
+   }
+
+//       Scanner scanner = new Scanner(System.in);
+//       System.out.println("Welcome to Pattern Generator!");
+//       System.out.print("Enter pattern type (square, Right angled triangle, pyramid, circle, diamond,parallelogram, trapezium): ");
+//       String patternType = scanner.nextLine();//scans userIn
+//       System.out.print("Enter size of the pattern: ");
+//       int size = scanner.nextInt();//scans size
+//       scanner.nextLine(); // Consume newline
+//       System.out.print("Enter character to use: ");
+//       char character = scanner.nextLine().charAt(0);//to solve the issue of person entering multiple character, chooses first only
+//       //switch case implementation instead of if-else to reduce complexity
+//       switch(patternType.toLowerCase()) {
+//           case "circle":
+//               generateCirclePattern(size, character);
+//               break;
+//           case "square":
+//               generateSquarePattern(size, character);
+//               break;
+//           case "right angled triangle":
+//               generateTrianglePattern(size, character);
+//               break;
+//           case "pyramid":
+//               generatePyramidPattern(size, character);
+//               break;
+//           case "diamond":
+//               generateDiamondPattern(size, character);
+//               break;
+//           case "parallelogram":
+//               System.out.println("Do you want the patter to be hollow? (True/false)");
+//               boolean hollow = scanner.nextBoolean();
+//               System.out.println("Enter base");
+//               int base = scanner.nextInt();
+//               System.out.println("Enter Height");
+//               int height = scanner.nextInt();
+//               printParallelogram(base, height, hollow, character);
+//               break;
+//           case "trapezium":
+//               System.out.println("Do you want the patter to be hollow? (True/false)");
+//               boolean hollow2 = scanner.nextBoolean();
+//               System.out.println("Enter base");
+//               int base2 = scanner.nextInt();
+//               System.out.println("Enter Height");
+//               int height2 = scanner.nextInt();
+//               printTrapezium(base2, height2, hollow2, character);
+//               break;
+//            default:
+//                //case if input fails or wrong input
+//               System.out.println("Invalid pattern type entered. Please choose one of the given one.");
+//           }
+//       }
    public static void generateSquarePattern(int size, char character) {
        boolean Hollow;
        Scanner sc = new Scanner(System.in);
@@ -59,7 +130,7 @@ public class PatternGenerator {
        if (!Hollow) {//check if they want hollow or not
            for (int i = 0; i < size; i++) {
                for (int j = 0; j < size; j++) {
-                   System.out.print(character + "   ");
+                   System.out.print(character + "  ");
                    //loop to print an n*n block of given char
                }
                System.out.println();
@@ -68,9 +139,9 @@ public class PatternGenerator {
            for (int i = 0; i < size; i++) {
                for (int j = 0; j < size; j++) {
                    if (i == 0 || i == size - 1 || j == 0 || j == size - 1) {
-                       System.out.print(character + "   ");
+                       System.out.print(character + "  ");
                    } else {
-                       System.out.print("    "); // Print spaces for hollow part
+                       System.out.print("   "); // Print spaces for hollow part
                    }
                }
                System.out.println();
